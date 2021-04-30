@@ -1,0 +1,179 @@
+$blue-1: linear-gradient(#569aff, #2e599b);
+$border: 0.5rem;
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background: $blue-1;
+    height: 16rem;
+    position: relative;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        max-width: 1050px;
+        padding: 2rem;
+        margin: 2rem auto 0.5rem;
+        // box-shadow: 0 0 5px black;
+        border-radius: 0.5rem;
+
+        form {
+            display: flex;
+            align-items: flex-end;
+            gap: 2rem;
+            min-height: 65.78px;
+
+            div {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    color: #ffffffe0;
+                    font-size: 1.2rem;
+                    font-weight: 300;
+                    cursor: text;
+                }
+
+                input {
+                    border-style: none;
+                    font-weight: 300;
+                    color: #e5e5e5cc;
+                    font-size: 0;
+                    width: 20rem;
+                    background: transparent;
+                    border-bottom: 2px solid rgba(2, 2, 2, 0.178);
+                    outline: transparent;
+                    // opacity: 0.8;
+
+                    transition: 0.1s ease-in-out;
+
+                    &:focus {
+                        font-size: 1.8rem;
+                        padding: 0.1rem 0.5rem 0.2rem;
+                    }
+
+                    &.focus {
+                        font-size: 1.8rem;
+                        padding: 0.1rem 0.5rem 0.2rem;
+                    }
+
+                    &[type=number]::-webkit-inner-spin-button { 
+                        appearance: none;
+                    }
+                }
+            }
+        }
+
+        button {
+            font-size: 0px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+
+            img {
+                width: 3rem;
+                cursor: pointer;
+                border-radius: 50%;
+                transition: transform 0.4s ease, filter 0.1s;
+
+                &:hover {
+                    transform: rotate(180deg);
+                }
+
+                &:active {
+                    filter: brightness(0.8);
+                }
+            }
+        }
+    }
+}
+
+main {
+    margin: 0 auto;
+    max-width: 62.5rem;
+    padding: 1.5rem;
+    height: calc(100vh - 256px);
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+
+    article {
+        .tableContainer,
+        .tableItems {
+            padding: 0 2rem;
+            overflow: auto;
+            max-height: 50vh;
+            transition: 0.5s ease-in-out;
+
+            & > img {
+                cursor: pointer;
+                transition: 0.2s ease;
+
+                &:hover {
+                    transform: scale(1.5);
+                }
+            }
+
+            table {
+                border-spacing: 0 0.5rem;
+                text-align: left;
+                width: 100%;
+
+                thead,
+                tbody {
+                    word-wrap: break-word;
+                    tr {
+                        &.trsList {
+                            cursor: pointer;
+                        }
+
+                        &:hover td {
+                            filter: opacity(1);
+                        }
+
+                        th {
+                            background: #fff;
+                            padding: 1rem 2rem;
+                        }
+
+                        td {
+                            background: #fff;
+                            filter: opacity(0.8);
+                            padding: 1rem 2rem;
+                            min-height: 100%;
+
+                            &:last-child {
+                                text-align: right;
+                            }
+                        }
+                    }
+                }
+            }
+            span.totalLists {
+                display: block;
+                text-align: right;
+                padding-right: 0.5rem;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: rgba(0, 0, 0, 0.404);
+
+                & span {
+                    font-weight: 800;
+                    color: #000000a9;
+                }
+            }
+
+            &.hidden {
+                visibility: hidden;
+                opacity: 0;
+                height: 0px;
+            }
+        }
+    }
+}

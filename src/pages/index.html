@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de items</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/global/global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Dynamic list</h1>
+        <div class="container">
+
+            <form action="" id="mainForm">
+            
+                <div>
+                    <label for="listName">Nome da lista</label>
+                    <input
+                    class="validate"
+                    autocomplete="off"
+                    onfocusin="DOM.formText()"
+                    onfocusout="DOM.formText()"
+                    type="text"
+                    name="listName"
+                    id="listName"
+                    maxlength="22"
+                    >
+                </div>
+            
+                <div>
+                    <label for="listType">Tipo de lista</label>
+                    <input
+                    class="validate"
+                    autocomplete="off"
+                    onfocusin="DOM.formText()"
+                    onfocusout="DOM.formText()"
+                    type="text"
+                    name="listType"
+                    id="listType"
+                    maxlength="22"
+                    >
+                </div>
+            </form>
+            <button
+            onclick="validations.validateInput()"
+            class="confirmList"
+            form="mainForm"
+            type="button"
+            >
+                <img src="../../public/add-circle.svg" alt="Adicionar lista">
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <div class="tableContainer hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Última edição</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <span class="totalLists"> Total de listas:
+                    <span>0</span>
+                </span>
+            </div>
+
+            <div class="tableItems">
+                <img src="../../public/reply.svg" alt="Voltar" onclick="toggleTables.toggleLists()">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>check</th>
+                            <th>Item</th>
+                            <th>Valor</th>
+                            <th>Última edição</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form action="">
+                                    <input type="radio" name="checkItem" id="checkItem">
+                                </form>
+                            </td>
+                            <td>Arroz</td>
+                            <td>R$ 26,50</td>
+                            <td>28/04/2020</td>
+                            <td>
+                                <img src="../../public/remove_circle.svg" alt="Remover Lista" onclick="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="totalItems"> Total de listas:
+                    <span>0</span>
+                </span>
+            </div>
+        </article>
+    </main>
+
+    <script src="../scripts/script.js"></script>
+
+</body>
+
+</html>

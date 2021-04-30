@@ -1,0 +1,227 @@
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: -webkit-gradient(linear, left top, left bottom, from(#569aff), to(#2e599b));
+  background: linear-gradient(#569aff, #2e599b);
+  height: 16rem;
+  position: relative;
+}
+
+header .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
+  max-width: 1050px;
+  padding: 2rem;
+  margin: 2rem auto 0.5rem;
+  border-radius: 0.5rem;
+}
+
+header .container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 2rem;
+  min-height: 65.78px;
+}
+
+header .container form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header .container form div label {
+  color: #ffffffe0;
+  font-size: 1.2rem;
+  font-weight: 300;
+  cursor: text;
+}
+
+header .container form div input {
+  border-style: none;
+  font-weight: 300;
+  color: #e5e5e5cc;
+  font-size: 0;
+  width: 20rem;
+  background: transparent;
+  border-bottom: 2px solid rgba(2, 2, 2, 0.178);
+  outline: transparent;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+header .container form div input:focus {
+  font-size: 1.8rem;
+  padding: 0.1rem 0.5rem 0.2rem;
+}
+
+header .container form div input.focus {
+  font-size: 1.8rem;
+  padding: 0.1rem 0.5rem 0.2rem;
+}
+
+header .container form div input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+header .container button {
+  font-size: 0px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+}
+
+header .container button img {
+  width: 3rem;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform 0.4s ease, -webkit-filter 0.1s;
+  transition: -webkit-transform 0.4s ease, -webkit-filter 0.1s;
+  transition: transform 0.4s ease, filter 0.1s;
+  transition: transform 0.4s ease, filter 0.1s, -webkit-transform 0.4s ease, -webkit-filter 0.1s;
+}
+
+header .container button img:hover {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+header .container button img:active {
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
+}
+
+main {
+  margin: 0 auto;
+  max-width: 62.5rem;
+  padding: 1.5rem;
+  height: calc(100vh - 256px);
+}
+
+main article .tableContainer,
+main article .tableItems {
+  padding: 0 2rem;
+  overflow: auto;
+  max-height: 50vh;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+main article .tableContainer > img,
+main article .tableItems > img {
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+main article .tableContainer > img:hover,
+main article .tableItems > img:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+main article .tableContainer table,
+main article .tableItems table {
+  border-spacing: 0 0.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+main article .tableContainer table thead,
+main article .tableContainer table tbody,
+main article .tableItems table thead,
+main article .tableItems table tbody {
+  word-wrap: break-word;
+}
+
+main article .tableContainer table thead tr.trsList,
+main article .tableContainer table tbody tr.trsList,
+main article .tableItems table thead tr.trsList,
+main article .tableItems table tbody tr.trsList {
+  cursor: pointer;
+}
+
+main article .tableContainer table thead tr:hover td,
+main article .tableContainer table tbody tr:hover td,
+main article .tableItems table thead tr:hover td,
+main article .tableItems table tbody tr:hover td {
+  -webkit-filter: opacity(1);
+          filter: opacity(1);
+}
+
+main article .tableContainer table thead tr th,
+main article .tableContainer table tbody tr th,
+main article .tableItems table thead tr th,
+main article .tableItems table tbody tr th {
+  background: #fff;
+  padding: 1rem 2rem;
+}
+
+main article .tableContainer table thead tr td,
+main article .tableContainer table tbody tr td,
+main article .tableItems table thead tr td,
+main article .tableItems table tbody tr td {
+  background: #fff;
+  -webkit-filter: opacity(0.8);
+          filter: opacity(0.8);
+  padding: 1rem 2rem;
+  min-height: 100%;
+}
+
+main article .tableContainer table thead tr td:last-child,
+main article .tableContainer table tbody tr td:last-child,
+main article .tableItems table thead tr td:last-child,
+main article .tableItems table tbody tr td:last-child {
+  text-align: right;
+}
+
+main article .tableContainer span.totalLists,
+main article .tableItems span.totalLists {
+  display: block;
+  text-align: right;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.404);
+}
+
+main article .tableContainer span.totalLists span,
+main article .tableItems span.totalLists span {
+  font-weight: 800;
+  color: #000000a9;
+}
+
+main article .tableContainer.hidden,
+main article .tableItems.hidden {
+  visibility: hidden;
+  opacity: 0;
+  height: 0px;
+}
+/*# sourceMappingURL=style.css.map */
