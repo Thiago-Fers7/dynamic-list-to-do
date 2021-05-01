@@ -202,8 +202,8 @@ main article .tableItems table tbody tr td:last-child {
   text-align: right;
 }
 
-main article .tableContainer span.totalLists,
-main article .tableItems span.totalLists {
+main article .tableContainer span.totalsList,
+main article .tableItems span.totalsList {
   display: block;
   text-align: right;
   padding-right: 0.5rem;
@@ -212,8 +212,8 @@ main article .tableItems span.totalLists {
   color: rgba(0, 0, 0, 0.404);
 }
 
-main article .tableContainer span.totalLists span,
-main article .tableItems span.totalLists span {
+main article .tableContainer span.totalsList span,
+main article .tableItems span.totalsList span {
   font-weight: 800;
   color: #000000a9;
 }

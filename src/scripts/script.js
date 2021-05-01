@@ -1,12 +1,14 @@
 const DOM = {
+    h1: document.querySelector('h1'),
     listName: document.querySelector('#listName'),
     listType: document.querySelector('#listType'),
     addButton: document.querySelector('.confirmList'),
     table: document.querySelector('.tableContainer tbody'),
+    tableItems: document.querySelector('.tableItems tbody'),
     input: document.querySelectorAll('.validate'),
 
-    indexValue() {
-        let index = document.querySelectorAll('.trsList')
+    indexValue(clss) {
+        let index = document.querySelectorAll(clss)
         index = index.length === 0 ? 0 : Number(index[index.length - 1].getAttribute('data-index')) + 1
         return index
     },
@@ -40,7 +42,7 @@ const validations = {
             alert("Preencha os campos com mais caracteres")
         } else {
             redirect()
-            
+
             // Att list
 
         }
@@ -74,7 +76,7 @@ const addList = {
         tr.setAttribute('class', 'trsList')
         tr.setAttribute('onclick', 'toggleTables.toggleLists()')
 
-        let index = DOM.indexValue()
+        const index = DOM.indexValue('trsList')
         tr.dataset.index = index
         tr.innerHTML = listData.list[0]
         DOM.table.appendChild(tr)
@@ -99,6 +101,17 @@ const addList = {
 }
 
 const addItems = {
+    showItems() {
+        const tr = document.createElement('tr')
+
+        tr.setAttribute('class', 'trsItems')
+        
+        const index = DOM.indexValue('trsItems')
+        tr.dataset.index = index
+        tr.innerHTML = listData.listItem[0]
+        DOM.tableItems.appendChild(tr)
+    },
+
     generateItems() {
         let html = `
         <tr>
@@ -117,7 +130,8 @@ const addItems = {
 
         listData.listItem.unshift(html)
         DOM.clearInput()
-        listData.totalList(listData.list, "totalItems")
+        listData.totalList(listData.listItem, "totalItems")
+        addItems.showItems()
     }
 }
 
@@ -143,8 +157,8 @@ const removeList = {
 
 const toggleTables = {
     tableContainer: document.querySelector('.tableContainer'),
-    tableItems: document.querySelector('.tableItems'),
     label: document.querySelectorAll('label'),
+    tableItems: document.querySelector('.tableItems'),
     inputListType: document.getElementById('listType'),
 
     toggleLists() {
