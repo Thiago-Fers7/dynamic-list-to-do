@@ -145,6 +145,15 @@ main article .tableItems {
   transition: 0.5s ease-in-out;
 }
 
+main article .tableContainer > span,
+main article .tableItems > span {
+  font-weight: 600;
+  opacity: .5;
+  font-size: 0.9rem;
+  display: block;
+  text-align: right;
+}
+
 main article .tableContainer table,
 main article .tableItems table {
   border-spacing: 0 0.5rem;
@@ -201,17 +210,17 @@ main article .tableItems table tbody tr td:last-child > img {
   cursor: pointer;
 }
 
-main article .tableContainer table thead tr td:first-child,
-main article .tableContainer table tbody tr td:first-child,
-main article .tableItems table thead tr td:first-child,
-main article .tableItems table tbody tr td:first-child {
+main article .tableContainer table thead tr.trsList td:first-child,
+main article .tableContainer table tbody tr.trsList td:first-child,
+main article .tableItems table thead tr.trsList td:first-child,
+main article .tableItems table tbody tr.trsList td:first-child {
   cursor: pointer;
 }
 
-main article .tableContainer table thead tr td:first-child:hover > span,
-main article .tableContainer table tbody tr td:first-child:hover > span,
-main article .tableItems table thead tr td:first-child:hover > span,
-main article .tableItems table tbody tr td:first-child:hover > span {
+main article .tableContainer table thead tr.trsList td:first-child:hover > span,
+main article .tableContainer table tbody tr.trsList td:first-child:hover > span,
+main article .tableItems table thead tr.trsList td:first-child:hover > span,
+main article .tableItems table tbody tr.trsList td:first-child:hover > span {
   text-decoration: underline;
   color: #6f57b1;
 }

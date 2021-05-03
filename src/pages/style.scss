@@ -119,6 +119,13 @@ main {
             max-height: 50vh;
             transition: 0.5s ease-in-out;
 
+            & > span {
+                font-weight: 600;
+                opacity: .5;
+                font-size: 0.9rem;
+                display: block;
+                text-align: right;
+            }
 
             table {
                 border-spacing: 0 0.5rem;
@@ -153,8 +160,10 @@ main {
                                     cursor: pointer;
                                 }
                             }
+                        }
 
-                            &:first-child {
+                        &.trsList {
+                            & td:first-child {
                                 cursor: pointer;
 
                                 &:hover > span {

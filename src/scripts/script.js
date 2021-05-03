@@ -79,7 +79,7 @@ const addList = {
     generateList() {
         const html = `
         <tr>
-            <td onclick="toggleTables.toggleLists(this)"><span>${DOM.listName.value}</span></td>
+            <td title="Clique para ver os itens da lista" onclick="toggleTables.toggleLists(this)"><span>${DOM.listName.value}</span></td>
             <td>${DOM.listType.value}</td>
             <td>${date.currentDate()}</td>
             <td>
@@ -125,7 +125,6 @@ const addItems = {
 
             DOM.tableItems.appendChild(tr)
         })
-        console.log(listData.listItemInOrder[this.indexList])
     },
 
     generateItems() {
@@ -151,18 +150,6 @@ const addItems = {
     }
 }
 
-const date = {
-    currentDate() {
-        const date = new Date()
-        const day = String(date.getDate()).padStart(2, '0')
-        const month = String(date.getMonth() + 1).padStart(2, '0')
-        const year = String(date.getFullYear()).replace(/20/g, '')
-        const hours = String(date.getHours())
-        const minutes = String(date.getMinutes())
-        return `${day}/${month}/${year} - ${hours}:${minutes}`
-    }
-}
-
 const remove = {
     data(element) {
         return {
@@ -170,23 +157,35 @@ const remove = {
             index: element.parentNode.getAttribute('data-index')
         }
     },
-
+    
     remoteList(element) {
         const { index, thisElement } = this.data(element)
         const list = listData.list
-
+        
         list.splice(index, 1)
         thisElement.remove()
         listData.totalList(list, "totalLists")
     },
-
+    
     removeItem(element) {
         const { index, thisElement } = this.data(element)
         const items = listData.listItemInOrder[addItems.indexList].items
-
+        
         items.splice(index, 1)
         thisElement.remove()
         listData.totalList(items, "totalLists")
+    }
+}
+
+const date = {
+    currentDate() {
+        const date = new Date()
+        const day = String(date.getDate()).padStart(2, '0')
+        const month = String(date.getMonth() + 1).padStart(2, '0')
+        const year = String(date.getFullYear()).replace(/20/g, '')
+        const hours = String(date.getHours()).padStart(2, '0')
+        const minutes = String(date.getMinutes()).padStart(2, '0')
+        return `${day}/${month}/${year} - ${hours}:${minutes}`
     }
 }
 
@@ -196,14 +195,14 @@ const toggleTables = {
     tableItems: document.querySelector('.tableItems'),
     previusImg: document.querySelector('.previus-img'),
     inputListType: document.getElementById('listType'),
-
+    
     toggleLists(element) {
         const label = this.label
-
+        
         const hiddenTableContainer = this.tableContainer.classList.toggle('hidden')
         this.tableItems.classList.toggle('hidden')
         this.previusImg.classList.toggle('hidden')
-
+        
         if (hiddenTableContainer) {
             label[0].textContent = 'Nome do Item'
             label[1].textContent = 'Valor (R$)'
