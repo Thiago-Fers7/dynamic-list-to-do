@@ -51,7 +51,7 @@
                 </div>
             </form>
             <button
-            onclick="validations.validateInput()"
+            onclick="validations.validateInput(addList.generateList)"
             class="confirmList"
             form="mainForm"
             type="button"
@@ -63,7 +63,7 @@
 
     <main>
         <article>
-            <div class="tableContainer hidden">
+            <div class="tableContainer ">
                 <table>
                     <thead>
                         <tr>
@@ -81,8 +81,8 @@
                 </span>
             </div>
 
-            <img class="previus-img" src="../../public/reply.svg" alt="Voltar" onclick="toggleTables.toggleLists()">
-            <div class="tableItems">
+            <img class="previus-img hidden" src="../../public/reply.svg" alt="Voltar" onclick="toggleTables.toggleLists()">
+            <div class="tableItems hidden">
                 <table>
                     <thead>
                         <tr>

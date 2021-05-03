@@ -129,9 +129,6 @@ main {
                 tbody {
                     word-wrap: break-word;
                     tr {
-                        &.trsList {
-                            cursor: pointer;
-                        }
 
                         &:hover td {
                             filter: opacity(1);
@@ -147,9 +144,23 @@ main {
                             filter: opacity(0.8);
                             padding: 1rem 2rem;
                             min-height: 100%;
+                            font-weight: 500;
 
                             &:last-child {
                                 text-align: right;
+
+                                & > img {
+                                    cursor: pointer;
+                                }
+                            }
+
+                            &:first-child {
+                                cursor: pointer;
+
+                                &:hover > span {
+                                    text-decoration: underline;
+                                    color: #6f57b1;
+                                }
                             }
                         }
                     }

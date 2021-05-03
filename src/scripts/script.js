@@ -51,7 +51,6 @@ const validations = {
 
 const listData = {
     list: [],
-    // listItem: [],
     listItemInOrder: [{
         items: []
     }],
@@ -71,22 +70,20 @@ const addList = {
         const tr = document.createElement('tr')
 
         tr.setAttribute('class', 'trsList')
-        tr.setAttribute('onclick', 'toggleTables.toggleLists(this)')
-
         tr.dataset.index = DOM.indexValue('trsList')
-
         tr.innerHTML = listData.list[0]
+
         DOM.table.appendChild(tr)
     },
 
     generateList() {
         const html = `
         <tr>
-            <td>${DOM.listName.value}</td>
+            <td onclick="toggleTables.toggleLists(this)"><span>${DOM.listName.value}</span></td>
             <td>${DOM.listType.value}</td>
             <td>${date.currentDate()}</td>
             <td>
-                <img src="../../public/remove_circle.svg" alt="Remover Lista" onclick="removeList.pickupIndex(this)">
+                <img src="../../public/remove_circle.svg" alt="Remover Lista" onclick="remove.remoteList(this)">
             </td>
         </tr>`
 
@@ -121,7 +118,7 @@ const addItems = {
 
         elements.forEach((element) => {
             const tr = document.createElement('tr')
-            
+
             tr.setAttribute('class', 'trsItems')
             tr.dataset.index = DOM.indexValue('trsItems')
             tr.innerHTML = element
@@ -143,7 +140,7 @@ const addItems = {
             <td>${DOM.listType.value}</td>
             <td>${date.currentDate()}</td>
             <td>
-                <img src="../../public/remove_circle.svg" alt="Remover Lista">
+                <img src="../../public/remove_circle.svg" alt="Remover Lista" onclick="remove.removeItem(this)">
             </td>
         </tr>`
 
@@ -166,17 +163,30 @@ const date = {
     }
 }
 
-const removeList = {
-    pickupIndex(thisElement) {
-        const element = thisElement.parentNode.parentNode
-        const index = element.parentNode.getAttribute('data-index')
-        removeList.remove(index, element)
+const remove = {
+    data(element) {
+        return {
+            thisElement: element.parentNode.parentNode,
+            index: element.parentNode.getAttribute('data-index')
+        }
     },
 
-    remove(index, element) {
-        listData.list.splice(index, 1)
-        element.remove()
-        listData.totalList(listData.list, "totalLists")
+    remoteList(element) {
+        const { index, thisElement } = this.data(element)
+        const list = listData.list
+
+        list.splice(index, 1)
+        thisElement.remove()
+        listData.totalList(list, "totalLists")
+    },
+
+    removeItem(element) {
+        const { index, thisElement } = this.data(element)
+        const items = listData.listItemInOrder[addItems.indexList].items
+
+        items.splice(index, 1)
+        thisElement.remove()
+        listData.totalList(items, "totalLists")
     }
 }
 

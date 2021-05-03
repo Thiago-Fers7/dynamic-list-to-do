@@ -159,13 +159,6 @@ main article .tableItems table tbody {
   word-wrap: break-word;
 }
 
-main article .tableContainer table thead tr.trsList,
-main article .tableContainer table tbody tr.trsList,
-main article .tableItems table thead tr.trsList,
-main article .tableItems table tbody tr.trsList {
-  cursor: pointer;
-}
-
 main article .tableContainer table thead tr:hover td,
 main article .tableContainer table tbody tr:hover td,
 main article .tableItems table thead tr:hover td,
@@ -191,6 +184,7 @@ main article .tableItems table tbody tr td {
           filter: opacity(0.8);
   padding: 1rem 2rem;
   min-height: 100%;
+  font-weight: 500;
 }
 
 main article .tableContainer table thead tr td:last-child,
@@ -198,6 +192,28 @@ main article .tableContainer table tbody tr td:last-child,
 main article .tableItems table thead tr td:last-child,
 main article .tableItems table tbody tr td:last-child {
   text-align: right;
+}
+
+main article .tableContainer table thead tr td:last-child > img,
+main article .tableContainer table tbody tr td:last-child > img,
+main article .tableItems table thead tr td:last-child > img,
+main article .tableItems table tbody tr td:last-child > img {
+  cursor: pointer;
+}
+
+main article .tableContainer table thead tr td:first-child,
+main article .tableContainer table tbody tr td:first-child,
+main article .tableItems table thead tr td:first-child,
+main article .tableItems table tbody tr td:first-child {
+  cursor: pointer;
+}
+
+main article .tableContainer table thead tr td:first-child:hover > span,
+main article .tableContainer table tbody tr td:first-child:hover > span,
+main article .tableItems table thead tr td:first-child:hover > span,
+main article .tableItems table tbody tr td:first-child:hover > span {
+  text-decoration: underline;
+  color: #6f57b1;
 }
 
 main article .tableContainer span.totalsList,
