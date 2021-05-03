@@ -51,8 +51,10 @@ const validations = {
 
 const listData = {
     list: [],
-    listItem: [],
-    listItemInOrder: [],
+    // listItem: [],
+    listItemInOrder: [{
+        items: []
+    }],
 
     totalList(data, clss) {
         const totalList = document.querySelector(`.${clss} span`)
@@ -98,14 +100,35 @@ const addList = {
 const addItems = {
     indexList: 0,
 
-    showItems() {
-        const tr = document.createElement('tr')
+    addItemInArray(html) {
+        const listItems = listData.listItemInOrder
+        const indexList = addItems.indexList
 
-        tr.setAttribute('class', 'trsItems')
-        
-        tr.dataset.index = DOM.indexValue('trsItems')
-        tr.innerHTML = listData.listItem[0]
-        DOM.tableItems.appendChild(tr)
+        for (let i = listItems.length; i <= indexList; i++) {
+            listItems.push({
+                items: []
+            })
+        }
+
+        listItems[indexList].items.push(html)
+        listData.totalList(listData.listItemInOrder[indexList].items, "totalItems")
+    },
+
+    showItems() {
+        const elements = listData.listItemInOrder[this.indexList].items
+
+        document.querySelectorAll('.trsItems').forEach(e => e.remove())
+
+        elements.forEach((element) => {
+            const tr = document.createElement('tr')
+            
+            tr.setAttribute('class', 'trsItems')
+            tr.dataset.index = DOM.indexValue('trsItems')
+            tr.innerHTML = element
+
+            DOM.tableItems.appendChild(tr)
+        })
+        console.log(listData.listItemInOrder[this.indexList])
     },
 
     generateItems() {
@@ -124,22 +147,10 @@ const addItems = {
             </td>
         </tr>`
 
-        const listItems = listData.listItemInOrder
-
-        while (listItems.length < addItems.indexList) {
-            listItems.push['oi']
-        }
-
-        // listItems.push([])
-
-        // listItems[]
-
-        console.log(listItems)
+        addItems.addItemInArray(html)
+        addItems.showItems()
 
         DOM.clearInput()
-        listData.totalList(listData.listItem, "totalItems")
-        // addItems.showItems()
-
     }
 }
 
@@ -173,26 +184,31 @@ const toggleTables = {
     tableContainer: document.querySelector('.tableContainer'),
     label: document.querySelectorAll('label'),
     tableItems: document.querySelector('.tableItems'),
+    previusImg: document.querySelector('.previus-img'),
     inputListType: document.getElementById('listType'),
 
     toggleLists(element) {
         const label = this.label
-        
+
         const hiddenTableContainer = this.tableContainer.classList.toggle('hidden')
         this.tableItems.classList.toggle('hidden')
-        
+        this.previusImg.classList.toggle('hidden')
+
         if (hiddenTableContainer) {
             label[0].textContent = 'Nome do Item'
             label[1].textContent = 'Valor (R$)'
             this.inputListType.setAttribute('type', 'number')
             DOM.addButton.setAttribute('onclick', 'validations.validateInput(addItems.generateItems)')
-            
+
             addItems.indexList = Number(element.getAttribute('data-index'))
+            addItems.showItems()
         } else {
             label[0].textContent = 'Nome da lista'
             label[1].textContent = 'Tipo de lista'
             this.inputListType.setAttribute('type', 'text')
             DOM.addButton.setAttribute('onclick', 'validations.validateInput(addList.generateList)')
+
+            document.querySelectorAll('.trsItems').forEach(e => e.remove())
         }
 
         // addItems.showItems(element)

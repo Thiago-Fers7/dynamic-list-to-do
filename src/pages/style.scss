@@ -104,6 +104,14 @@ main {
     // justify-content: flex-start;
 
     article {
+        & > img {
+            cursor: pointer;
+            transition: 0.2s ease;
+
+            &:hover {
+                transform: scale(1.5);
+            }
+        }
         .tableContainer,
         .tableItems {
             padding: 0 2rem;
@@ -111,14 +119,6 @@ main {
             max-height: 50vh;
             transition: 0.5s ease-in-out;
 
-            & > img {
-                cursor: pointer;
-                transition: 0.2s ease;
-
-                &:hover {
-                    transform: scale(1.5);
-                }
-            }
 
             table {
                 border-spacing: 0 0.5rem;
@@ -169,11 +169,11 @@ main {
                 }
             }
 
-            &.hidden {
-                visibility: hidden;
-                opacity: 0;
-                height: 0px;
-            }
+        }
+        & .hidden {
+            visibility: hidden;
+            opacity: 0;
+            height: 0px;
         }
     }
 }

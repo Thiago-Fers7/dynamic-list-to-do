@@ -125,6 +125,17 @@ main {
   height: calc(100vh - 256px);
 }
 
+main article > img {
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+main article > img:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
 main article .tableContainer,
 main article .tableItems {
   padding: 0 2rem;
@@ -132,19 +143,6 @@ main article .tableItems {
   max-height: 50vh;
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
-}
-
-main article .tableContainer > img,
-main article .tableItems > img {
-  cursor: pointer;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-}
-
-main article .tableContainer > img:hover,
-main article .tableItems > img:hover {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
 }
 
 main article .tableContainer table,
@@ -218,8 +216,7 @@ main article .tableItems span.totalsList span {
   color: #000000a9;
 }
 
-main article .tableContainer.hidden,
-main article .tableItems.hidden {
+main article .hidden {
   visibility: hidden;
   opacity: 0;
   height: 0px;
