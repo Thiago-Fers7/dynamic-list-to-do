@@ -8,7 +8,7 @@ const DOM = {
     input: document.querySelectorAll('.validate'),
 
     indexValue(clss) {
-        let index = document.querySelectorAll(clss)
+        let index = document.querySelectorAll(`.${clss}`)
         index = index.length === 0 ? 0 : Number(index[index.length - 1].getAttribute('data-index')) + 1
         return index
     },
@@ -52,6 +52,7 @@ const validations = {
 const listData = {
     list: [],
     listItem: [],
+    listItemInOrder: [],
 
     totalList(data, clss) {
         const totalList = document.querySelector(`.${clss} span`)
@@ -60,12 +61,6 @@ const listData = {
 }
 
 const addList = {
-    pickupIndex(thisElement) {
-        const element = thisElement.parentNode.parentNode
-        const index = element.parentNode.getAttribute('data-index')
-        removeList.remove(index, element)
-    },
-
     reloadList() {
 
     },
@@ -74,10 +69,10 @@ const addList = {
         const tr = document.createElement('tr')
 
         tr.setAttribute('class', 'trsList')
-        tr.setAttribute('onclick', 'toggleTables.toggleLists()')
+        tr.setAttribute('onclick', 'toggleTables.toggleLists(this)')
 
-        const index = DOM.indexValue('trsList')
-        tr.dataset.index = index
+        tr.dataset.index = DOM.indexValue('trsList')
+
         tr.innerHTML = listData.list[0]
         DOM.table.appendChild(tr)
     },
@@ -89,7 +84,7 @@ const addList = {
             <td>${DOM.listType.value}</td>
             <td>${date.currentDate()}</td>
             <td>
-                <img src="../../public/remove_circle.svg" alt="Remover Lista" onclick="addList.pickupIndex(this)">
+                <img src="../../public/remove_circle.svg" alt="Remover Lista" onclick="removeList.pickupIndex(this)">
             </td>
         </tr>`
 
@@ -101,13 +96,14 @@ const addList = {
 }
 
 const addItems = {
+    indexList: 0,
+
     showItems() {
         const tr = document.createElement('tr')
 
         tr.setAttribute('class', 'trsItems')
         
-        const index = DOM.indexValue('trsItems')
-        tr.dataset.index = index
+        tr.dataset.index = DOM.indexValue('trsItems')
         tr.innerHTML = listData.listItem[0]
         DOM.tableItems.appendChild(tr)
     },
@@ -128,10 +124,22 @@ const addItems = {
             </td>
         </tr>`
 
-        listData.listItem.unshift(html)
+        const listItems = listData.listItemInOrder
+
+        while (listItems.length < addItems.indexList) {
+            listItems.push['oi']
+        }
+
+        // listItems.push([])
+
+        // listItems[]
+
+        console.log(listItems)
+
         DOM.clearInput()
         listData.totalList(listData.listItem, "totalItems")
-        addItems.showItems()
+        // addItems.showItems()
+
     }
 }
 
@@ -148,6 +156,12 @@ const date = {
 }
 
 const removeList = {
+    pickupIndex(thisElement) {
+        const element = thisElement.parentNode.parentNode
+        const index = element.parentNode.getAttribute('data-index')
+        removeList.remove(index, element)
+    },
+
     remove(index, element) {
         listData.list.splice(index, 1)
         element.remove()
@@ -161,22 +175,26 @@ const toggleTables = {
     tableItems: document.querySelector('.tableItems'),
     inputListType: document.getElementById('listType'),
 
-    toggleLists() {
+    toggleLists(element) {
         const label = this.label
-
+        
         const hiddenTableContainer = this.tableContainer.classList.toggle('hidden')
         this.tableItems.classList.toggle('hidden')
-
+        
         if (hiddenTableContainer) {
             label[0].textContent = 'Nome do Item'
             label[1].textContent = 'Valor (R$)'
             this.inputListType.setAttribute('type', 'number')
             DOM.addButton.setAttribute('onclick', 'validations.validateInput(addItems.generateItems)')
+            
+            addItems.indexList = Number(element.getAttribute('data-index'))
         } else {
             label[0].textContent = 'Nome da lista'
             label[1].textContent = 'Tipo de lista'
             this.inputListType.setAttribute('type', 'text')
             DOM.addButton.setAttribute('onclick', 'validations.validateInput(addList.generateList)')
         }
+
+        // addItems.showItems(element)
     }
 }
