@@ -17,7 +17,10 @@
 
 <body>
     <header>
-        <h1>Dynamic list</h1>
+        <div class="titleContainer">
+            <img class="previus-img hidden" src="../../public/reply.svg" alt="Voltar" onclick="toggleTables.toggleLists()">
+            <h1>Dynamic list</h1>
+        </div>
         <div class="container">
 
             <form action="" id="mainForm">
@@ -63,8 +66,8 @@
 
     <main>
         <article>
-            <div class="tableContainer ">
-                <span>Clique no nome da lista para ver seus itens.</span>
+            <div class="tableContainer hidden">
+                <span>Clique no <strong>nome</strong> da lista para ver seus itens.</span>
                 <table>
                     <thead>
                         <tr>
@@ -82,8 +85,7 @@
                 </span>
             </div>
 
-            <img class="previus-img hidden" src="../../public/reply.svg" alt="Voltar" onclick="toggleTables.toggleLists()">
-            <div class="tableItems hidden">
+            <div class="tableItems ">
                 <table>
                     <thead>
                         <tr>
@@ -95,6 +97,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>
+                                <form action="">
+                                    <input type="checkbox" name="checkItem" id="checkItem">
+                                    <label for="checkItem"></label>
+                                </form>
+                            </td>
+                            <td>${DOM.listName.value}</td>
+                            <td>${DOM.listType.value}</td>
+                            <td>${date.currentDate()}</td>
+                            <td>
+                                <img src="../../public/remove_circle.svg" alt="Remover Lista" onclick="remove.removeItem(this)">
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <span class="totalItems totalsList"> Total de Itens:

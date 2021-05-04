@@ -79,7 +79,7 @@ const addList = {
     generateList() {
         const html = `
         <tr>
-            <td title="Clique para ver os itens da lista" onclick="toggleTables.toggleLists(this)"><span>${DOM.listName.value}</span></td>
+            <td title="Clique para ver os itens da lista" onclick="toggleTables.toggleLists(this.parentNode)"><span>${DOM.listName.value}</span></td>
             <td>${DOM.listType.value}</td>
             <td>${date.currentDate()}</td>
             <td>
@@ -147,6 +147,9 @@ const addItems = {
         addItems.showItems()
 
         DOM.clearInput()
+
+        console.log(this.indexList)
+        console.log(listData.listItemInOrder)
     }
 }
 
@@ -210,6 +213,7 @@ const toggleTables = {
             DOM.addButton.setAttribute('onclick', 'validations.validateInput(addItems.generateItems)')
 
             addItems.indexList = Number(element.getAttribute('data-index'))
+
             addItems.showItems()
         } else {
             label[0].textContent = 'Nome da lista'

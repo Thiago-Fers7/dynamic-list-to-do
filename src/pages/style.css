@@ -18,6 +18,32 @@ header {
   position: relative;
 }
 
+header .titleContainer {
+  width: 100%;
+  max-width: 1050px;
+}
+
+header .titleContainer img {
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  padding: 0.5rem;
+  width: 50px;
+  margin-left: 2rem;
+}
+
+header .titleContainer img:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+header .titleContainer h1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
 header .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -86,7 +112,7 @@ header .container form div input.focus {
   padding: 0.1rem 0.5rem 0.2rem;
 }
 
-header .container form div input[type=number]::-webkit-inner-spin-button {
+header .container form div input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
           appearance: none;
 }
@@ -125,17 +151,6 @@ main {
   height: calc(100vh - 256px);
 }
 
-main article > img {
-  cursor: pointer;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-}
-
-main article > img:hover {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
-}
-
 main article .tableContainer,
 main article .tableItems {
   padding: 0 2rem;
@@ -145,10 +160,10 @@ main article .tableItems {
   transition: 0.5s ease-in-out;
 }
 
-main article .tableContainer > span,
-main article .tableItems > span {
-  font-weight: 600;
-  opacity: .5;
+main article .tableContainer > span:first-child,
+main article .tableItems > span:first-child {
+  font-weight: normal;
+  opacity: 0.4;
   font-size: 0.9rem;
   display: block;
   text-align: right;
@@ -196,6 +211,37 @@ main article .tableItems table tbody tr td {
   font-weight: 500;
 }
 
+main article .tableContainer table thead tr td form input[type="checkbox"],
+main article .tableContainer table tbody tr td form input[type="checkbox"],
+main article .tableItems table thead tr td form input[type="checkbox"],
+main article .tableItems table tbody tr td form input[type="checkbox"] {
+  display: none;
+}
+
+main article .tableContainer table thead tr td form label::before,
+main article .tableContainer table tbody tr td form label::before,
+main article .tableItems table thead tr td form label::before,
+main article .tableItems table tbody tr td form label::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 1px solid black;
+  position: absolute;
+  cursor: pointer;
+}
+
+main article .tableContainer table thead tr td form input[type="checkbox"]:checked + label::before,
+main article .tableContainer table tbody tr td form input[type="checkbox"]:checked + label::before,
+main article .tableItems table thead tr td form input[type="checkbox"]:checked + label::before,
+main article .tableItems table tbody tr td form input[type="checkbox"]:checked + label::before {
+  background: url(../../public/check.svg) 50%;
+  background-size: contain;
+}
+
 main article .tableContainer table thead tr td:last-child,
 main article .tableContainer table tbody tr td:last-child,
 main article .tableItems table thead tr td:last-child,
@@ -241,7 +287,7 @@ main article .tableItems span.totalsList span {
   color: #000000a9;
 }
 
-main article .hidden {
+.hidden {
   visibility: hidden;
   opacity: 0;
   height: 0px;

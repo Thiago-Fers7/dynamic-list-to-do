@@ -11,6 +11,28 @@ header {
     height: 16rem;
     position: relative;
 
+    .titleContainer {
+        width: 100%;
+        max-width: 1050px;
+
+        img {
+            cursor: pointer;
+            transition: 0.2s ease;
+            padding: 0.5rem;
+            width: 50px;
+            margin-left: 2rem;
+
+            &:hover {
+                transform: scale(1.5);
+            }
+        }
+
+        h1 {
+            flex: 1;
+            text-align: center;
+        }
+    }
+
     .container {
         display: flex;
         justify-content: space-between;
@@ -62,7 +84,7 @@ header {
                         padding: 0.1rem 0.5rem 0.2rem;
                     }
 
-                    &[type=number]::-webkit-inner-spin-button { 
+                    &[type="number"]::-webkit-inner-spin-button {
                         appearance: none;
                     }
                 }
@@ -99,19 +121,7 @@ main {
     padding: 1.5rem;
     height: calc(100vh - 256px);
 
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-
     article {
-        & > img {
-            cursor: pointer;
-            transition: 0.2s ease;
-
-            &:hover {
-                transform: scale(1.5);
-            }
-        }
         .tableContainer,
         .tableItems {
             padding: 0 2rem;
@@ -119,9 +129,9 @@ main {
             max-height: 50vh;
             transition: 0.5s ease-in-out;
 
-            & > span {
-                font-weight: 600;
-                opacity: .5;
+            & > span:first-child {
+                font-weight: normal;
+                opacity: 0.4;
                 font-size: 0.9rem;
                 display: block;
                 text-align: right;
@@ -136,7 +146,6 @@ main {
                 tbody {
                     word-wrap: break-word;
                     tr {
-
                         &:hover td {
                             filter: opacity(1);
                         }
@@ -152,6 +161,30 @@ main {
                             padding: 1rem 2rem;
                             min-height: 100%;
                             font-weight: 500;
+
+                            form {
+                                input[type="checkbox"] {
+                                    display: none;
+                                }
+
+                                label::before {
+                                    content: "";
+                                    width: 18px;
+                                    height: 18px;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    border: 1px solid black;
+                                    position: absolute;
+                                    cursor: pointer;
+                                }
+
+                                input[type="checkbox"]:checked + label::before {
+                                    background: url(../../public/check.svg) 50%;
+                                    background-size: contain;
+                                }
+
+                            }
 
                             &:last-child {
                                 text-align: right;
@@ -188,12 +221,12 @@ main {
                     color: #000000a9;
                 }
             }
-
-        }
-        & .hidden {
-            visibility: hidden;
-            opacity: 0;
-            height: 0px;
         }
     }
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0px;
 }
