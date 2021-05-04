@@ -128,11 +128,13 @@ const addItems = {
     },
 
     generateItems() {
+        index = DOM.indexValue('trsItems')
         let html = `
         <tr>
             <td>
                 <form action="">
-                    <input type="radio" name="checkItem" id="checkItem">
+                    <input type="checkbox" name="checkItem" id="checkItem${index}">
+                    <label for="checkItem${index}"></label>
                 </form>
             </td>
             <td>${DOM.listName.value}</td>
@@ -160,20 +162,20 @@ const remove = {
             index: element.parentNode.getAttribute('data-index')
         }
     },
-    
+
     remoteList(element) {
         const { index, thisElement } = this.data(element)
         const list = listData.list
-        
+
         list.splice(index, 1)
         thisElement.remove()
         listData.totalList(list, "totalLists")
     },
-    
+
     removeItem(element) {
         const { index, thisElement } = this.data(element)
         const items = listData.listItemInOrder[addItems.indexList].items
-        
+
         items.splice(index, 1)
         thisElement.remove()
         listData.totalList(items, "totalLists")
@@ -198,14 +200,14 @@ const toggleTables = {
     tableItems: document.querySelector('.tableItems'),
     previusImg: document.querySelector('.previus-img'),
     inputListType: document.getElementById('listType'),
-    
+
     toggleLists(element) {
         const label = this.label
-        
+
         const hiddenTableContainer = this.tableContainer.classList.toggle('hidden')
         this.tableItems.classList.toggle('hidden')
         this.previusImg.classList.toggle('hidden')
-        
+
         if (hiddenTableContainer) {
             label[0].textContent = 'Nome do Item'
             label[1].textContent = 'Valor (R$)'

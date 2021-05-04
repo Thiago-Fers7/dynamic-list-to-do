@@ -66,7 +66,7 @@
 
     <main>
         <article>
-            <div class="tableContainer hidden">
+            <div class="tableContainer ">
                 <span>Clique no <strong>nome</strong> da lista para ver seus itens.</span>
                 <table>
                     <thead>
@@ -85,7 +85,7 @@
                 </span>
             </div>
 
-            <div class="tableItems ">
+            <div class="tableItems hidden">
                 <table>
                     <thead>
                         <tr>
@@ -97,20 +97,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <form action="">
-                                    <input type="checkbox" name="checkItem" id="checkItem">
-                                    <label for="checkItem"></label>
-                                </form>
-                            </td>
-                            <td>${DOM.listName.value}</td>
-                            <td>${DOM.listType.value}</td>
-                            <td>${date.currentDate()}</td>
-                            <td>
-                                <img src="../../public/remove_circle.svg" alt="Remover Lista" onclick="remove.removeItem(this)">
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                 <span class="totalItems totalsList"> Total de Itens:
