@@ -57,6 +57,7 @@ const listData = {
 
     totalList(data, clss) {
         const totalList = document.querySelector(`.${clss} span`)
+        console.log(data)
         totalList.textContent = data.length
     }
 }
@@ -149,26 +150,35 @@ const addItems = {
         addItems.showItems()
 
         DOM.clearInput()
-
-        console.log(this.indexList)
-        console.log(listData.listItemInOrder)
     }
 }
 
 const remove = {
+    attDataIndex() {
+        const trs = document.querySelectorAll('.trsList')
+        trs.forEach((tr, i = 0) => {
+            tr.dataset.index = i++
+        })
+    },
+
     data(element) {
         return {
             thisElement: element.parentNode.parentNode,
-            index: element.parentNode.getAttribute('data-index')
+            index: element.parentNode.parentNode.getAttribute('data-index')
         }
     },
 
     remoteList(element) {
         const { index, thisElement } = this.data(element)
         const list = listData.list
-
+        
         list.splice(index, 1)
+        listData.listItemInOrder.splice(index, 1)
+        
         thisElement.remove()
+
+        remove.attDataIndex()
+
         listData.totalList(list, "totalLists")
     },
 
