@@ -154,8 +154,8 @@ const addItems = {
 }
 
 const remove = {
-    attDataIndex() {
-        const trs = document.querySelectorAll('.trsList')
+    attDataIndex(trClass) {
+        const trs = document.querySelectorAll(`.${trClass}`)
         trs.forEach((tr, i = 0) => {
             tr.dataset.index = i++
         })
@@ -174,10 +174,10 @@ const remove = {
         
         list.splice(index, 1)
         listData.listItemInOrder.splice(index, 1)
-        
+
         thisElement.remove()
 
-        remove.attDataIndex()
+        remove.attDataIndex('trsList')
 
         listData.totalList(list, "totalLists")
     },
@@ -188,6 +188,9 @@ const remove = {
 
         items.splice(index, 1)
         thisElement.remove()
+
+        remove.attDataIndex('trsItems')
+
         listData.totalList(items, "totalLists")
     }
 }
