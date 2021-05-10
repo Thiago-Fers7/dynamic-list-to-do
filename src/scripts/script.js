@@ -57,7 +57,7 @@ const listData = {
 
     totalList(data, clss) {
         const totalList = document.querySelector(`.${clss} span`)
-        console.log(data)
+        // console.log(data)
         totalList.textContent = data.length
     }
 }
@@ -108,11 +108,15 @@ const addItems = {
             })
         }
 
-        listItems[indexList].items.push(html)
-        listData.totalList(listData.listItemInOrder[indexList].items, "totalItems")
+        if (html) {
+            listItems[indexList].items.push(html)
+            listData.totalList(listData.listItemInOrder[indexList].items, "totalItems")
+        }
     },
 
-    showItems() {
+    showItems(html) {
+        addItems.addItemInArray(html)
+
         const elements = listData.listItemInOrder[this.indexList].items
 
         document.querySelectorAll('.trsItems').forEach(e => e.remove())
@@ -146,8 +150,7 @@ const addItems = {
             </td>
         </tr>`
 
-        addItems.addItemInArray(html)
-        addItems.showItems()
+        addItems.showItems(html)
 
         DOM.clearInput()
     }
@@ -171,7 +174,7 @@ const remove = {
     remoteList(element) {
         const { index, thisElement } = this.data(element)
         const list = listData.list
-        
+
         list.splice(index, 1)
         listData.listItemInOrder.splice(index, 1)
 
@@ -230,6 +233,7 @@ const toggleTables = {
             addItems.indexList = Number(element.getAttribute('data-index'))
 
             addItems.showItems()
+            listData.totalList(listData.listItemInOrder[Number(element.getAttribute('data-index'))].items, "totalItems")
         } else {
             label[0].textContent = 'Nome da lista'
             label[1].textContent = 'Tipo de lista'
@@ -238,7 +242,5 @@ const toggleTables = {
 
             document.querySelectorAll('.trsItems').forEach(e => e.remove())
         }
-
-        // addItems.showItems(element)
     }
 }
