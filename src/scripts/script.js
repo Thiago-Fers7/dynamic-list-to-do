@@ -193,8 +193,7 @@ const remove = {
         thisElement.remove()
 
         remove.attDataIndex('trsItems')
-
-        listData.totalList(items, "totalLists")
+        listData.totalList(items, "totalItems")
     }
 }
 
